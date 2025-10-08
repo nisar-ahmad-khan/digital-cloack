@@ -36,7 +36,7 @@ navigate('/')
 }
 
     return (<>
-<div> <button className="border-2 rounded-full px-5 py-2 m-10 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-800 text-white hover:cursor-pointer" onClick={goBack}>go back to cloack</button></div>
+<div> <button className="border-2 rounded-full px-5 py-2 m-10 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-800 text-white hover:cursor-pointer" onClick={goBack}>go back to clock</button></div>
     
     
     <div className="w-[90%] mt-10 md:w-[60%] lg:w-[50%] m-auto p-6 border-2 rounded-2xl shadow-lg bg-gray-200 space-y-4">
