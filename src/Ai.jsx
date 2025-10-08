@@ -35,58 +35,70 @@ function goBack(){
 navigate('/')
 }
 
-    return (<>
-<div> <button className="border-2 rounded-full px-5 py-2 m-10 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-800 text-white hover:cursor-pointer" onClick={goBack}>go back to clock</button></div>
-    
-    
-    <div className="w-[90%] mt-10 md:w-[60%] lg:w-[50%] m-auto p-6 border-2 rounded-2xl shadow-lg bg-gray-200 space-y-4">
-  {/* Input + Button Row */}
- 
-   <motion.div
-      className="flex flex-col sm:flex-row items-center gap-4"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
-      <input
-        type="text"
-        placeholder="Ask something..."
-        className="flex-1 h-12 text-xl px-4 border-2 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-500"
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-      />
-
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="h-12 px-6 border rounded-md text-lg text-white font-semibold bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-500 mt-10 sm:mt-0"
-        onClick={ask}
-        aria-label="Ask a question"
+    return (
+  <>
+    {/* Go Back Button */}
+    <div className="w-full flex justify-center mt-8">
+      <button
+        onClick={goBack}
+        className="px-6 py-2 rounded-full text-white text-base sm:text-lg font-medium bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-800 transition-all duration-300 border-2 border-transparent hover:border-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
       >
-        ASK
-      </motion.button>
+        ⬅ Go Back to Clock
+      </button>
+    </div>
+
+    {/* Input and Ask Button Container */}
+    <div className="w-[90%] md:w-[60%] lg:w-[50%] mx-auto mt-10 p-6 sm:p-8 border-2 border-gray-300 rounded-3xl shadow-lg bg-gray-100 space-y-6">
+      <motion.div
+        className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <input
+          type="text"
+          placeholder="Ask something..."
+          className="flex-1 h-12 px-4 text-base sm:text-lg border-2 border-gray-300 rounded-lg text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-200"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+        />
+
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={ask}
+          aria-label="Ask a question"
+          className="h-12 px-6 rounded-lg text-base sm:text-lg font-medium text-white bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-200"
+        >
+          Ask
+        </motion.button>
+      </motion.div>
+    </div>
+
+    {/* Answer Display */}
+    <motion.div
+      key={ans}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className="w-[90%] max-w-3xl mx-auto mt-12 p-6 sm:p-8 bg-white border border-gray-200 shadow-xl rounded-3xl"
+    >
+      <div className="text-lg sm:text-xl text-gray-800 leading-relaxed whitespace-pre-line overflow-y-auto max-h-[400px] scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+        {ans ? (
+          ans
+        ) : (
+          <span className="text-gray-400 italic">Your answer will appear here...</span>
+        )}
+      </div>
     </motion.div>
 
-</div>
+    {/* Footer */}
+    <footer className="text-center text-gray-500 text-base sm:text-lg mt-16 mb-8">
+      &copy; Nisar Ahmad {new Date().getFullYear()}
+    </footer>
+  </>
+);
 
-
-
-<motion.div
-  key={ans}
-  initial={{ opacity: 0, y: 10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.4 }}
-  className="bg-gray-100 h-[500px] w-[90%] m-auto border rounded-2xl p-6 mt-10 "
->
-  <div className="text-xl text-gray-900 whitespace-pre-line">
-    {ans || <span className="text-gray-800">Your answer will appear here...</span>}
-  </div>
-</motion.div>
-
-
-<div className="text-center text-2xl">&copy;Nisar-ahmad {new Date().getFullYear()}</div>
-    
-    </>)
 }
 
 export default Ai;
