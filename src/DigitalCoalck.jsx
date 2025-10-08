@@ -25,22 +25,27 @@ const DigitalCloac = ()=>{
     function aiMode(){
         navigate('/ask')
     }
-    return(
-        <>
-        <div  className="bg-[url('/src/assets/5630939.jpg')] bg-cover bg-no-repeat fixed bg-center h-screen w-screen overflow-scroll gradient bg-gradient-to-bl from-amber-500 to-yellow-700 text-white">
-            <div className=" w-[90%] m-auto mt-[20%] text-8xl text-center">
-        <span className="font-mono flex items-center justify-center text-9xl font-bold text-white shadow-lg">
-  {formatDate()}
-</span>
-            </div>
-            <div className="flex justify-center mt-10 font-mono text-2xl">
-        <button onClick={aiMode} className="text-center m-auto border px-10 py-10 rounded-2xl hover:backdrop-blur-md hover:cursor-pointer transition duration-300 hover:scale-110">Ask anything</button>
-            </div>
-            
+   return (
+  <div className="h-screen w-screen bg-cover bg-center bg-no-repeat bg-[url('/src/assets/5630939.jpg')] text-white flex flex-col justify-center items-center px-4">
+    
+    {/* Clock Display */}
+    <div className="text-center">
+      <h1 className="font-mono text-7xl sm:text-8xl md:text-9xl font-bold drop-shadow-md">
+        {formatDate()}
+      </h1>
+    </div>
 
-        </div>
-        </>
-    )
+    {/* Ask Button */}
+    <button
+      onClick={aiMode}
+      className="mt-16 text-lg sm:text-xl px-8 py-4 rounded-full border-2 border-white text-white font-semibold hover:bg-white/10 hover:backdrop-blur-sm transition duration-300 ease-in-out"
+    >
+      Ask Anything
+    </button>
+  </div>
+);
+
+
 }
 
 export default DigitalCloac;
